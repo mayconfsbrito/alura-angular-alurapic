@@ -1,0 +1,10 @@
+
+// instalação do angular em versão específica
+npm install -g @angular/cli@6.0.7
+
+// criação do projeto alurapic
+ng new PROJETO
+
+// sobe o servidor do angular no projeto
+cd PROJETO/
+ng serve -o
