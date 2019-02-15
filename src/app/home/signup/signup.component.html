@@ -50,7 +50,7 @@
       >
     </ap-vmessage>
     <ap-vmessage
-      *ngIf="signupForm.get('userName').errors?.pattern"
+      *ngIf="signupForm.get('userName').errors?.lowerCase"
       text="Must be lower case"
       >
     </ap-vmessage>
