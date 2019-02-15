@@ -28,6 +28,10 @@ export class UserService {
         return this.userName;
     }
 
+    isLogged() {
+        return this.tokenService.hasToken();
+    }
+
     logout() {
         this.tokenService.removeToken();
         this.userSubject.next(null);
