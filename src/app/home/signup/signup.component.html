@@ -54,6 +54,11 @@
       text="Must be lower case"
       >
     </ap-vmessage>
+    <ap-vmessage
+      *ngIf="signupForm.get('userName').errors?.userNameTaken"
+      text="User already taken"
+      >
+    </ap-vmessage>
   </div>
   <div class="form-group">
     <input formControlName="password" type="password" placeholder="password" class="form-control">
@@ -73,7 +78,7 @@
       >
     </ap-vmessage>
   </div>
-  <button class="btn btn-primary btn-block">Register</button>
+  <button [disabled]="signupForm.invalid || signupForm.pending" class="btn btn-primary btn-block">Register</button>
 
   <p>Already a user?
       <a [routerLink]="['']"> Sign In!</a>
