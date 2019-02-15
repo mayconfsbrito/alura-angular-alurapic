@@ -23,6 +23,11 @@ export class UserService {
         return this.userSubject.asObservable();
     }
 
+    logout() {
+        this.tokenService.removeToken();
+        this.userSubject.next(null);
+    }
+
     private decodeAndNotify() {
         const token = this.tokenService.getToken();
         const user = jwt_decode(token) as User;
