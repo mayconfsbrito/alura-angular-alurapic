@@ -11,7 +11,7 @@
           formControlName="file"
           type="file"
           accept="image/*"
-          (change)="file = handleFile($event.target.files[0])"
+          (change)="handleFile($event.target.files[0])"
         >
         <ap-vmessage
           text="Please, select a photo"
