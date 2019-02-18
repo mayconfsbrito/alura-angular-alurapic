@@ -1,3 +1,28 @@
-<p>
-  photo-form works!
-</p>
+<div class="container">
+  <form class="row">
+    <div class="col-md-6 text-center">
+      <input type="file" accept="image/*">
+    </div>
+
+    <div class="col-md-6">
+      <div class="form-group">
+        <textarea 
+          class="form-control form-control-sm" 
+          placeholder="photo description"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label class="text-muted">
+          Allow comments
+          <input type="checkbox">
+        </label>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-block">
+        Upload
+      </button>
+
+      <a class="btn btn-secondary btn-block">Cancel</a>
+    </div>
+  </form>
+</div>
