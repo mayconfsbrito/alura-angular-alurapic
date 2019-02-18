@@ -1,7 +1,12 @@
 <div class="container">
   <form [formGroup]="photoForm" class="row" (submit)="upload()">
     <div class="col-md-6 text-center">
+      <button type="button" (click)="fileInput.click()" class="btn btn-primary">
+          <i class="fa fa-image fa-4x align-middle"></i>
+      </button>
       <input 
+        #fileInput
+        hidden
         formControlName="file"
         type="file"
         accept="image/*"
