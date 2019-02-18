@@ -1,1 +1,24 @@
-<h1>Hello!</h1>
+<div class="bg-white border" *ngIf="(photo$ | async) as photo">
+    <div class="row">
+        <div class="col-lg-8">
+        <ap-photo [url]="photo?.url" [description]="photo?.description"></ap-photo>
+        </div>
+
+        <div class="col-lg-4">
+        <small>
+            <p class="text-left break-word">{{photo?.description}}</p>
+            <hr>
+        </small>
+        <div class="mt-4">
+            <form>
+            <div class="input-group">
+                <textarea class="form-control"></textarea>
+                <div class="input-group-append">
+                <button class="btn btn-primary pull-left">Publish</button>
+                </div>
+            </div>
+            </form>
+        </div>
+        </div>
+    </div>
+</div>
