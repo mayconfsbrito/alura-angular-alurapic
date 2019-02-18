@@ -5,20 +5,12 @@
         </div>
 
         <div class="col-lg-4">
-        <small>
-            <p class="text-left break-word">{{photo?.description}}</p>
-            <hr>
-        </small>
-        <div class="mt-4">
-            <form>
-            <div class="input-group">
-                <textarea class="form-control"></textarea>
-                <div class="input-group-append">
-                <button class="btn btn-primary pull-left">Publish</button>
-                </div>
-            </div>
-            </form>
-        </div>
+            <small>
+                <p class="text-left break-word">{{photo?.description}}</p>
+                <hr>
+            </small>
+
+            <ap-photo-comments [photoId]="photoId"></ap-photo-comments>
         </div>
     </div>
 </div>
