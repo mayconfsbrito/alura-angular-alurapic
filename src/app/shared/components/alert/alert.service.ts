@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 
 import { AlertType, Alert } from './alert';
+import { Router, NavigationStart } from '@angular/router';
 
 @Injectable({
     providedIn: 'root'
@@ -9,28 +10,48 @@ import { AlertType, Alert } from './alert';
 export class AlertService {
 
     alertSubject: Subject<Alert> = new Subject<Alert>();
+    keepAfterRouterChange = false;
 
-    success(message: string) {
-        this.alert(AlertType.SUCCESS, message);
+    constructor(router: Router) {
+        router.events.subscribe(event => this.subscribeRouteChange(event));
     }
 
-    info(message: string) {
-        this.alert(AlertType.INFO, message);
+    success(message: string, keepAfterRouterChange: boolean = false) {
+        this.alert(AlertType.SUCCESS, message, keepAfterRouterChange);
     }
 
-    warning(message: string) {
-        this.alert(AlertType.WARNING, message);
+    info(message: string, keepAfterRouterChange: boolean = false) {
+        this.alert(AlertType.INFO, message, keepAfterRouterChange);
     }
 
-    danger(message: string) {
-        this.alert(AlertType.DANGER, message);
+    warning(message: string, keepAfterRouterChange: boolean = false) {
+        this.alert(AlertType.WARNING, message, keepAfterRouterChange);
     }
 
-    private alert(alertType: AlertType, message: string) {
-        this.alertSubject.next(new Alert(alertType, message));
+    danger(message: string, keepAfterRouterChange: boolean = false) {
+        this.alert(AlertType.DANGER, message, keepAfterRouterChange);
     }
 
     getAlert() {
         return this.alertSubject.asObservable();
+    }
+
+    private alert(alertType: AlertType, message: string, keepAfterRouterChange: boolean) {
+        this.keepAfterRouterChange = keepAfterRouterChange;
+        this.alertSubject.next(new Alert(alertType, message));
+    }
+
+    private clear() {
+        this.alertSubject.next(null);
+    }
+
+    private subscribeRouteChange(event: any) {
+        if (event instanceof NavigationStart) {
+            if (this.keepAfterRouterChange) {
+                this.keepAfterRouterChange = false;
+            } else {
+                this.clear();
+            }
+        }
     }
 }
