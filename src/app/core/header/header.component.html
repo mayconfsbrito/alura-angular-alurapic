@@ -1,6 +1,16 @@
 <header class="sticky-top">
     <nav class="navbar navbar-light bg-white">
-        <a class="navbar-brand">ALURAPIC</a>
+        <a class="navbar-brand">
+            <i (click)="menu.toggle()" class="fa fa-bars mr-2"></i>
+            ALURAPIC
+        </a>
+
+        <ap-menu #menu>
+            <ul>
+                <li>AB</li>
+                <li>CD</li>
+            </ul>
+        </ap-menu>
 
         <div *ngIf="(user$ | async) as user; else login">
             <i class="fa fa-user-circle mr-1"></i>
