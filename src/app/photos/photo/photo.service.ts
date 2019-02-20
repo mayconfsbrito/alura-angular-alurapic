@@ -32,7 +32,7 @@ export class PhotoService {
         return this.http.post(
             API + '/photos/upload',
             formData,
-            { 
+            {
                 observe: 'events',
                 reportProgress: true
             }
